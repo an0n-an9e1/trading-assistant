@@ -19,7 +19,7 @@ const LangOption: React.FC<ActiveComponentProps> = ({ active }) => {
   <div className='relative' style={{padding: "0"}}>
 
     <div style={{position: "absolute", top: "1.95rem", width: "100%", height: "3rem", display: show ? "block" : "none", paddingTop: "0.5rem", }}>
-      <div  style={{background: "rgb(243, 244, 246)", position: "relative", zIndex: "1000", boxShadow: "13px 10px 43px 0 rgba(0, 0, 0, 0.16)"}} className='text-[#9AA0B4] rounded-xl'>
+      <div  style={{background: "rgb(243, 244, 246)", position: "relative", zIndex: "0", boxShadow: "13px 10px 43px 0 rgba(0, 0, 0, 0.16)"}} className='text-[#9AA0B4] rounded-xl'>
       <div className="rounded-xl" style={{boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25)"}}>
        <button onClick={() => toggle("EN")}>
         <p style={{margin: "0.75rem"}}>EN</p>
@@ -36,8 +36,8 @@ const LangOption: React.FC<ActiveComponentProps> = ({ active }) => {
       </div>
     </div>
 
-    <button className="rounded-xl relative bg-white" onClick={() => setShow(true)} style={{boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)", zIndex: "100", background: "white"}}>
-      <div className="rounded-xl text-[#9AA0B4] text-sm flex items-center" style={{boxShadow: "13px 10px 43px 0 rgba(0, 0, 0, 0.16)", zIndex: "100"}}>
+    <button className="rounded-xl relative bg-white" onClick={() => setShow(true)} style={{boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)", zIndex: "0", background: "white"}}>
+      <div className="rounded-xl text-[#9AA0B4] text-sm flex items-center" style={{boxShadow: "13px 10px 43px 0 rgba(0, 0, 0, 0.16)", zIndex: "0"}}>
           <p style={{marginLeft: "0.75rem"}}>{activeLang}</p>
 
           <div style={{margin: "0.75rem"}}>

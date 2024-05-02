@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Page({ params }: {params: {id: string}}) {
   const [quantity, setQuantity] = useState<number>(0);
@@ -13,8 +14,9 @@ export default function Page({ params }: {params: {id: string}}) {
 
   return (
     <div className="w-full">
-      <div className="w-[calc(100% - 3rem)] m-6 rounded-2xl bg-red-400 aspect-[47/30] relative"> 
+      <div className="w-[calc(100% - 3rem)] m-6 rounded-2xl overflow-clip aspect-[47/30] relative"> 
         <Link href="/">
+          <Image src="/coffe.jpg" alt="Desc" fill objectFit="cover" />
           <div className="min-w-10 min-h-10 bg-white rounded-xl absolute top-3 left-3 z-10 flex justify-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 320 512"><path fill="#111719" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
           </div>
@@ -42,28 +44,28 @@ export default function Page({ params }: {params: {id: string}}) {
       <div className="mx-6 my-4">
         <p className="text-[#323643] text-lg font-bold">Size</p>
 
-        <form className="ml-4 mt-2 flex flex-col">
-          <label className="w-full flex justify-between">
+        <form className="ml-4 mt-2 flex flex-col" style={{fontWeight: "500"}}>
+          <label className="w-full flex justify-between items-center my-2">
             <p>Small</p>
-            <div className="flex">
+            <div className="flex items-center">
               <p>50 MKD</p>
-              <input className="ml-2" type="radio" value="Small" name="size" defaultChecked />
+              <input className="ml-2 checkbox" type="radio" value="Small" name="size" defaultChecked />
             </div>
           </label>
 
-          <label className="w-full flex justify-between">
+          <label className="w-full flex justify-between items-centermy-2">
             <p>Medium</p>
-            <div className="flex">
+            <div className="flex items-center">
               <p>80 MKD</p>
-              <input className="ml-2" type="radio" value="Medium" name="size" />
+              <input className="ml-2 checkbox" type="radio" value="Medium" name="size" />
             </div>
           </label>
 
-          <label className="w-full flex justify-between">
+          <label className="w-full flex justify-between items-center my-2">
             <p>Large</p>
-            <div className="flex">
+            <div className="flex items-center">
               <p>100 MKD</p>
-              <input className="ml-2" type="radio" value="Large" name="size" />
+              <input className="ml-2 checkbox" type="radio" value="Large" name="size" />
             </div>
           </label>
         </form>

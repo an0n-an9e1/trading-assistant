@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       {/* Nav */}
-      <div className="flex justify-between items-center m-4 my-6">
+      <div className="flex justify-between items-center m-4 my-6 z-10">
         <div className="w-14 h-14 bg-[#16253B] rounded-xl"></div>
         <a className="font-extrabold underline text-[#16253B]">Ask for Bill</a>
         <LangOption active={"EN"} /> 
