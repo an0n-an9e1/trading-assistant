@@ -1,17 +1,60 @@
+"use client"
 import LangOption from "@/ui/lang";
 import Menu from "@/ui/menu";
 import Option from "@/ui/option";
 import Category from "@/ui/category";
+import { useEffect, useState } from "react";
+
+interface CategoryData {
+    catID: number;
+    catName: string;
+    cCheck: number;
+    catName2: string;
+    catName3: string;
+}
 
 export default function Home() {
+  const [data, setData] = useState<CategoryData[]>([]);
+  const [lang, setLang] = useState<string>("EN");
+
+  const makeCall = async () => {
+    const res = await fetch('/api/example', {
+      method: 'GET',
+    })
+    const resData: CategoryData[] = await res.json();
+    setData(resData);
+  }
+
+  useEffect(() => {
+    makeCall();
+  }, []);
+
+  const mkCategories = data.map(row => row.catName);
+  const alCategories = data.map(row => row.catName2);
+  const enCategories = data.map(row => row.catName3);
+  const getCategory = (lang: string) => {
+    switch(lang) {
+      case "EN":
+        return enCategories;
+      case "AL":
+        return alCategories;
+      case "MK":
+        return mkCategories;
+    }
+  }
+  const setLangOpt = (option: string) => {
+    setLang(option);
+  }
+
   return (
     <div>
       {/* Nav */}
       <div className="flex justify-between items-center m-4 my-6 z-10">
         <div className="w-14 h-14 bg-[#16253B] rounded-xl"></div>
         <a className="font-extrabold underline text-[#16253B]">Ask for Bill</a>
-        <LangOption active={"EN"} /> 
+        <LangOption active={lang} setActiveLang={setLangOpt} /> 
       </div>
+
 
       {/* Search */}
       <div className="m-4 p-4 border border-gray-150 rounded-xl text-sm w-[calc(100% - 2rem)] flex">
@@ -22,7 +65,7 @@ export default function Home() {
       </div>
 
       {/* Tags */}
-      <Category categories={["Drinks", "Coffe", "Tea"]}/>
+      <Category categories={getCategory(lang)} />
 
       {/* Content */}
       <h2 className="text-[#323643] mt-[-1.5rem] ml-4 text-lg font-bold">Featured foods</h2>

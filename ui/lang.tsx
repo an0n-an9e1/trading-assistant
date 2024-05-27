@@ -1,18 +1,20 @@
 "use client";
-import React from 'react';
+import React, { SetStateAction } from 'react';
 import { useState } from 'react';
 
 interface ActiveComponentProps {
   active: string;
+  setActiveLang: (option: string) => void;
 }
 
-const LangOption: React.FC<ActiveComponentProps> = ({ active }) => {
+const LangOption: React.FC<ActiveComponentProps> = ({ active, setActiveLang }) => {
   const [activeLang, setActive] = useState<string>(active);
   const [show, setShow] = useState<boolean>(false);
   
   function toggle(lang: string) {
     setShow(false)
     setActive(lang)
+    setActiveLang(lang)
   }
 
   return (
